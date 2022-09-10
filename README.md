@@ -33,3 +33,10 @@ tile.bmp tile-blocked.bmp tile-closed.bmp tile-route.bmp target.bmp bot.bmp & fe
 #### dynamic.h and dynamic.cpp:
 `These contains the code for the cDynamic class, which animates the player and bot classes. All moving objects inherit from this class. When you set a new grid position for a dynamic object using the SetNext() function, the dynamic object moves smoothly from its current location to the new location. This takes half a second, and the animation is controlled by its Update() function.`
 
+#### botbase.h:
+`This defines the class cBotBase, which is a base class for other AI bot classes. As a base class, you cannot create an object of this type directly. It inherits from the class cDynamic, because bots are dynamic objects. 
+The key part of this class is the virtual function ChooseNextGridPosition(). This function is called automatically when the bot arrives at a new grid location (i.e. when it has finished animating from one grid location to another), and the code in this function should decide which location to move to next. Because this is called automatically, bots are always moving.`
+
+#### bots.h and botRandom.cpp:
+`bot.h contains a definition for the class cBotRandom, which is a simple example bot class. An object of this class is instantiated in the main function, and you can see it wondering around randomly(for empty level file) when you run the provided code.` 
+
